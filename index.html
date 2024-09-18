@@ -1,94 +1,44 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda</title>
-    <script>
-        function calculateTotal() {
-            // Get the values of prices and quantities
-            const price1 = parseFloat(document.getElementById('price1').value) || 0;
-            const quantity1 = parseFloat(document.getElementById('quantity1').value) || 0;
-            const price2 = parseFloat(document.getElementById('price2').value) || 0;
-            const quantity2 = parseFloat(document.getElementById('quantity2').value) || 0;
+    <title>Inicio de Sesion</title>
 
-            // Calculate the total
-            const total = (price1 * quantity1) + (price2 * quantity2);
-            
-            // Display the total
-            document.getElementById('total').innerText = total.toFixed(2);
-        }
-
-        function calculateChange() {
-            // Get the total and the payment
-            const total = parseFloat(document.getElementById('total').innerText);
-            const payment = parseFloat(document.getElementById('payment').value) || 0;
-
-            // Calculate the change
-            const change = payment - total;
-
-            // Display the change
-            document.getElementById('change').innerText = change.toFixed(2);
-        }
-
-        window.onload = function() {
-            // Attach event listeners to the buttons
-            document.getElementById('calculate').addEventListener('click', calculateTotal);
-            document.getElementById('pay').addEventListener('click', calculateChange);
-        }
-    </script>
 </head>
 <body>
     <style>
         body{
             background-color: #c9def0;
             font-family: verdana;
-            font-size: 20px;
-            padding-left: 30px;
+            font-size: 25px;
+            text-align: center;
+            /* padding-left: 30px; */
         }
-        .textbox{
-            width: 80px;
-        }
-        </style>
-    <h1>Tienda</h1>
+    </style>
     
-    <!-- Primera fila de Precio y Cantidad -->
-    <div>
-        <label for="price1">Precio:</label>
-        <input class="textbox" type="text" id="price1">
-        <label for="quantity1">Cantidad:</label>
-        <input class="textbox" type="text" id="quantity1">
-    </div>
-    
-    <!-- Segunda fila de Precio y Cantidad -->
-    <div>
-        <label for="price2">Precio:</label>
-        <input class="textbox" type="text" id="price2">
-        <label for="quantity2">Cantidad:</label>
-        <input class="textbox" type="text" id="quantity2">
-    </div>
-    
-    <!-- Botón de Cobrar -->
-    <div>
-        <button id="calculate">Cobrar</button>
-    </div>
-    
-    <!-- Monto a pagar -->
-    <div>
-        <p>Usted va a pagar <b>$<span id="total">0.00</span></b></p>
-    </div>
-    
-    <!-- Segmento para Efectivo -->
-    <div>
-        <label for="payment">Efectivo:</label>
-        <input class="textbox" type="text" id="payment">
-        <button id="pay">Ok</button>
-    </div>
-    
-    <!-- Cambio -->
-    <div>
-        <p>Su cambio es <b>$<span id="change">0.00</span></b></p>
-    </div>
+        <h2>Iniciar Sesion</h2>
+        <form id="loginForm" onsubmit="return validateForm()">
+            <input type="text" id="username" placeholder="Nombre de usuario" required>
+            <br>
+            <input type="password" id="password" placeholder="Contraseña" required>
+            <br>
+            <button type="submit">Siguiente</button>
+        </form>
+   
 
+    <script>
+        function validateForm() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            if (username === "omar" && password === "0000") {
+                // Redirigir a la página web especificada
+                window.location.href = "index.html";
+                return false; // Evita que el formulario se envíe de forma tradicional
+            } else {
+                alert("Nombre de usuario o contraseña incorrectos");
+                return false; // Evita que el formulario se envíe de forma tradicional
+            }
+        }
+    </script>
 </body>
 </html>
